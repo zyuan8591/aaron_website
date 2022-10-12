@@ -20,8 +20,8 @@ const Homepage = () => {
 
   return (
     <div className="">
-      <div className="border-b border-lightGray mb-3">
-        <ul className="flex gap-4 w-main mx-auto px-8 pt-6 mb-b1 h-main">
+      <div className="border-b border-lightGray mb-6">
+        <ul className="flex gap-4 max-w-main mx-auto px-8 pt-6 mb-b1 h-main">
           {tabs.map((tab) => (
             <li
               className={`${
@@ -38,7 +38,9 @@ const Homepage = () => {
           ))}
         </ul>
       </div>
-      <div className="w-main mx-auto px-8">{tab_page[tabNow]}</div>
+      <div className="max-w-main mx-auto px-8 text-mainContent">
+        {tab_page[tabNow]}
+      </div>
     </div>
   );
 };

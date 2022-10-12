@@ -9,8 +9,12 @@ module.exports = {
       height: {
         main: '60px',
       },
+      maxWidth: {
+        main: '1280px',
+      },
       spacing: {
         b1: '-1px',
+        b32: '-32px',
       },
     },
     colors: {
@@ -20,6 +24,7 @@ module.exports = {
       lightGray: '#d8dee4',
       accentClr: '#e60012',
       white: '#fff',
+      link: '#0969da',
       transparent: 'transparent',
     },
   },
