@@ -19,7 +19,7 @@ const Homepage = () => {
   const tab_page = [<Profile />, <Skill />, <SideProject />];
 
   return (
-    <div className="">
+    <>
       <div className="border-b border-lightGray mb-6">
         <ul className="flex gap-4 max-w-main mx-auto px-8 pt-6 mb-b1 h-main">
           {tabs.map((tab) => (
@@ -38,10 +38,10 @@ const Homepage = () => {
           ))}
         </ul>
       </div>
-      <div className="max-w-main mx-auto px-8 text-mainContent">
+      <div className="max-w-main mx-auto px-8 mb-6 text-mainContent">
         {tab_page[tabNow]}
       </div>
-    </div>
+    </>
   );
 };
 

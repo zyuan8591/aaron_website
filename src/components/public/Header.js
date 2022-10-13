@@ -5,7 +5,7 @@ const Header = () => {
   const nav = [
     { id: '1', name: 'Home', link: '/aaron_website/' },
     { id: '2', name: 'Posts', link: '/aaron_website/posts' },
-    { id: '3', name: 'Test', link: '/aaron_website/test' },
+    { id: '3', name: 'TodoList', link: '/aaron_website/todo' },
   ];
 
   return (
