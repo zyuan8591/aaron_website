@@ -55,7 +55,34 @@ const skill = {
   other: ['Figma', 'npm'],
   list: [],
 };
-const sideProject = ['a', 'b', 'c'];
+const sideProject = [
+  {
+    id: 1,
+    name: 'LIFE - 小家電電商網站',
+    content:
+      '生活家電的電商網站，前台提供使用者購物、分享食譜、參加活動、購物車結帳、會員中心，後台具商品、活動管理及前後台客服聊天室。',
+    tech: [
+      '前端技術：React / Sass / Bootstrap',
+      '後端技術：Node.js / MySQL / Express',
+      '前後端串接技術：RESTful API',
+      '其他技術：Git / GitHub / npm',
+    ],
+    myJob: [
+      '首頁、頁首頁尾、食譜頁、最新消息頁、前後台客服聊天室切版及 RWD',
+      '食譜 CRUD ( 使用 React hook 及 antd 進行表單驗證 )、食譜留言 CRUD',
+      '頁首提供全站搜尋功能',
+      '使用 socket.io 建立前後台一對一即時聊天室、後台向所有聊天室公告訊息',
+      '串接 Line Pay 金流',
+      '後端 RESTful API 架構開發，MySQL 資料庫設計',
+    ],
+    link: {
+      frontEndRepo: 'https://github.com/zyuan8591/life_project_fe',
+      backEndRepo: 'https://github.com/zyuan8591/life_project_be',
+      demo: 'https://youtu.be/tl7whXBI1H4',
+    },
+    img: 'https://i.imgur.com/ZkR0f9J.jpg',
+  },
+];
 
 const Test = () => {
   // GET DATA
