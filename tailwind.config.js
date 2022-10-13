@@ -11,6 +11,7 @@ module.exports = {
       },
       maxWidth: {
         main: '1280px',
+        todo: '600px',
         sideProject: '500px',
       },
       spacing: {
@@ -24,6 +25,7 @@ module.exports = {
       subContent: '#8c8c8c',
       lightGray: '#d8dee4',
       accentClr: '#e60012',
+      successClr: '#57cc99',
       white: '#fff',
       link: '#0969da',
       transparent: 'transparent',
