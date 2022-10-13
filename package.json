@@ -2,6 +2,7 @@
   "name": "aaron_website",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://zyuan8591.github.io/aaron_website",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@emotion/react": "^11.10.4",
@@ -13,6 +14,7 @@
     "axios": "^1.1.2",
     "dotenv": "^16.0.3",
     "firebase": "^9.11.0",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
@@ -25,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
