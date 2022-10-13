@@ -38,6 +38,24 @@ const data = {
     '　　熱愛在網路上尋找資源學習新技術，並與團隊討論後實踐於專案中增加開發效率，期望未來能夠使用自身技術協助開發團隊完成各項專案。',
   ],
 };
+const skill = {
+  frontEnd: [
+    'HTML',
+    'CSS',
+    'Javascript',
+    'jQuery',
+    'React.js',
+    'Sass',
+    'Bootstrap',
+    'tailwind',
+  ],
+  backEnd: ['Node.js', 'PHP', 'MySQL', 'Express'],
+  IDE: ['Visual Studio Code'],
+  git: ['Git', 'GitHub'],
+  other: ['Figma', 'npm'],
+  list: [],
+};
+const sideProject = ['a', 'b', 'c'];
 
 const Test = () => {
   // GET DATA
@@ -57,6 +75,8 @@ const Test = () => {
   // SET DATA
   const db = getDatabase();
   set(ref(db, 'profile'), data);
+  set(ref(db, 'skill'), skill);
+  set(ref(db, 'sideProject'), sideProject);
 
   return <div className="ml-10">123</div>;
 };

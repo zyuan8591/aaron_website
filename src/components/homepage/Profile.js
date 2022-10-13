@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import React, { useEffect, useState } from 'react';
-import { getDatabase, ref, child, get, set } from 'firebase/database';
+import { getDatabase, ref, child, get } from 'firebase/database';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 import { AiOutlineGithub, AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
@@ -23,14 +23,13 @@ const title = css`
 const Profile = () => {
   const [profileData, setProfileData] = useState({});
 
+  // GET PROFILE DATA
   useEffect(() => {
-    // GET PROFILE DATA
     const dbRef = ref(getDatabase());
     get(child(dbRef, `profile`))
       .then((snapshot) => {
         if (snapshot.exists()) {
           let data = snapshot.val();
-          console.log(data);
           setProfileData(data);
         }
       })
@@ -41,7 +40,8 @@ const Profile = () => {
 
   // Loading Icon
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-  if (!profileData.name) return <Spin indicator={antIcon} />;
+  if (!profileData.name)
+    return <Spin indicator={antIcon} className="absolute top-1/2 left-1/2" />;
 
   return (
     <div className="border border-lightGray rounded p-6 flex flex-col gap-2">
@@ -100,10 +100,10 @@ const Profile = () => {
           </Timeline.Item>
         ))}
       </Timeline>
-      {/* Autobiohgraphy */}
+      {/* Autobiohgraphy =============================================*/}
       <h2 className="text-lg underline underline-offset-4 mt-4">自傳</h2>
-      {profileData.autobiohgraphy.map((a) => (
-        <p>{a}</p>
+      {profileData.autobiohgraphy.map((a, i) => (
+        <p key={i}>{a}</p>
       ))}
     </div>
   );

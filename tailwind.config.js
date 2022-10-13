@@ -11,6 +11,7 @@ module.exports = {
       },
       maxWidth: {
         main: '1280px',
+        sideProject: '500px',
       },
       spacing: {
         b1: '-1px',
