@@ -18,7 +18,7 @@ const TodoList = () => {
   const addTodoHandler = () => {
     if (!newTodo.trim()) return;
     let todo = { id: uuidv4(), content: newTodo, status: false, edit: false };
-    let newTodoList = [todo, ...todoList];
+    let newTodoList = [...todoList, todo];
     setTodoList(newTodoList);
     setNewTodo('');
     localStorage.setItem('aaron_w_todo', JSON.stringify(newTodoList));
