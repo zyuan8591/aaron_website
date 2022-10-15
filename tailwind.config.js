@@ -14,6 +14,7 @@ module.exports = {
         todo: '600px',
         sideProject: '500px',
       },
+
       spacing: {
         b1: '-1px',
         b32: '-32px',
@@ -29,6 +30,12 @@ module.exports = {
       white: '#fff',
       link: '#0969da',
       transparent: 'transparent',
+    },
+    minHeight: {
+      todo: '300px',
+    },
+    minWidth: {
+      todoQ: '300px',
     },
   },
   plugins: [],
