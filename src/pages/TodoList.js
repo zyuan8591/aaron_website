@@ -97,8 +97,8 @@ const TodoList = () => {
             {/* use Description  */}
             <div className="flex items-center absolute right-full top-1/2 -translate-y-1/2 mr-2 group">
               <AiOutlineQuestionCircle />
-              <div className="absolute hidden top-full left-1/2 bg-lightGray opacity-90 group-hover:block mt-2 min-w-todoQ p-2 rounded">
-                <h2>使用說明：</h2>
+              <div className="absolute hidden top-full left-1/2 bg-mainContent opacity-90 group-hover:block mt-2 min-w-todoQ p-2 rounded text-white">
+                <h2 className="text-white">使用說明：</h2>
                 <ul className="list-decimal pl-4 pt-1">
                   <li>
                     待辦事項左側圖示為拖曳排序，也可拖曳至 FINISH 完成該事項。
