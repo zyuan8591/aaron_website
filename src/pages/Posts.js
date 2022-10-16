@@ -1,6 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getDatabase, ref, child, get } from 'firebase/database';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
+import PostCard from '../components/posts/PostCard';
 
 const title = css`
   &::before {
@@ -16,11 +20,37 @@ const title = css`
 `;
 
 const Posts = () => {
+  const [postData, setPostData] = useState([]);
+
+  // GET PROFILE DATA
+  useEffect(() => {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `posts`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          let data = snapshot.val();
+          console.log(data);
+          setPostData(data);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }, []);
+
+  // Loading Icon
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+  if (!postData.length)
+    return <Spin indicator={antIcon} className="absolute top-1/2 left-1/2" />;
+
   return (
     <div className="max-w-main mx-auto px-8 py-6 text-mainContent flex flex-col gap-2">
       <h2 className="text-2xl font-bold relative pl-3" css={title}>
         所有文章
       </h2>
+      {postData.map((post) => (
+        <PostCard key={post.id} post={post}></PostCard>
+      ))}
     </div>
   );
 };
