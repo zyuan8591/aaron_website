@@ -83,6 +83,15 @@ const sideProject = [
     img: 'https://i.imgur.com/ZkR0f9J.jpg',
   },
 ];
+const posts = [
+  {
+    id: 1,
+    title: 'React-router',
+    tag: ['React'],
+    content: '## React',
+    date: '2022-10-16 Sun',
+  },
+];
 
 const Test = () => {
   // GET DATA
@@ -98,12 +107,12 @@ const Test = () => {
     .catch((e) => {
       console.error(e);
     });
-
   // SET DATA
   const db = getDatabase();
   set(ref(db, 'profile'), data);
   set(ref(db, 'skill'), skill);
   set(ref(db, 'sideProject'), sideProject);
+  set(ref(db, 'posts'), posts);
 
   return <div className="ml-10">123</div>;
 };
