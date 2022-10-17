@@ -11,9 +11,12 @@ const Header = () => {
   return (
     <div className="font-bold flex h-main bg-mainClr text-white">
       <div className=" py-3 px-8 flex items-center">
-        <h1 className="rounded-full border-solid border-2 border-white inline-block px-2 py-0.5 text-white select-none">
+        <Link
+          to="/"
+          className="hover:text-white rounded-full border-solid border-2 border-white inline-block px-2 py-0.5 text-white select-none"
+        >
           AaronWebsite
-        </h1>
+        </Link>
       </div>
       <ul className="flex gap-3 items-center">
         {nav.map((d) => (

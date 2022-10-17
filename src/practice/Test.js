@@ -86,9 +86,8 @@ const sideProject = [
 const posts = [
   {
     id: 1,
-    title: 'React-router',
+    title: 'React-Router',
     tag: ['React'],
-    content: '## React',
     date: '2022-10-16 Sun',
   },
 ];
