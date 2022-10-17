@@ -29,7 +29,6 @@ const Posts = () => {
       .then((snapshot) => {
         if (snapshot.exists()) {
           let data = snapshot.val();
-          console.log(data);
           setPostData(data);
         }
       })
