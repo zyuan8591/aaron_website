@@ -19,7 +19,7 @@ const PostCard = ({ post }) => {
         <span className="text-subContent">．{post.date}</span>
       </div>
       <Link to={`/posts/${post.id}`}>
-        <h3 className="text-mainClr font-bold text-xl cursor-pointer">
+        <h3 className="text-mainClr font-bold text-xl cursor-pointer mb-3">
           {post.title}
         </h3>
       </Link>
