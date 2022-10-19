@@ -108,6 +108,7 @@ const TodoList = () => {
                 </ul>
               </div>
             </div>
+            {/* add new todo item input */}
             <input
               type="text"
               className="border border-subContent focus:outline-none p-1 placeholder:text-subContent flex-grow focus:border-accentClr"
@@ -118,6 +119,7 @@ const TodoList = () => {
                 if (e.key === 'Enter') addTodoHandler();
               }}
             />
+            {/* add button */}
             <button
               className="border border-subContent px-2 hover:border-accentClr hover:text-accentClr ease-linear"
               onClick={addTodoHandler}
@@ -154,7 +156,7 @@ const TodoList = () => {
               </ul>
             )}
           </Droppable>
-          {/* Finish List */}
+          {/* Finish todo List */}
           <h2 className="font-bold text-lg text-accentClr">
             FINISH ({todoList.filter((todo) => todo.status).length})
           </h2>

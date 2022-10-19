@@ -64,6 +64,7 @@ const Post = () => {
 
   return (
     <div className="max-w-main mx-auto px-8 py-6 text-mainContent flex flex-col gap-2">
+      {/* Post author & date */}
       <div className="flex items-center gap-2">
         <figure className="w-10">
           <img
@@ -77,6 +78,7 @@ const Post = () => {
           <span className="text-subContent">{postData.date}</span>
         </div>
       </div>
+      {/* Post title & tag */}
       <div className="flex items-center gap-2">
         <h1 className="text-4xl font-bold text-mainClr">{postData.title}</h1>
         {postData.tag.map((t, i) => (
@@ -88,6 +90,7 @@ const Post = () => {
           </span>
         ))}
       </div>
+      {/* Post content */}
       <div className="text-base" css={mkdown}>
         {postsContent[postData.id - 1]}
       </div>

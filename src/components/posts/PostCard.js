@@ -7,6 +7,7 @@ const PostCard = ({ post }) => {
       key={post.id}
       className="text-mainContent py-4 border-b border-lightGray last:border-0"
     >
+      {/* Post date information */}
       <div className="flex items-center gap-1">
         <figure className="w-4">
           <img
@@ -18,11 +19,13 @@ const PostCard = ({ post }) => {
         <span className="text-mainClr">Aaron Yu</span>
         <span className="text-subContent">．{post.date}</span>
       </div>
+      {/* Post title */}
       <Link to={`/posts/${post.id}`}>
         <h3 className="text-mainClr font-bold text-xl cursor-pointer mb-3">
           {post.title}
         </h3>
       </Link>
+      {/* Post tags */}
       <div className="flex gap-1">
         {post.tag.map((t, i) => (
           <span
