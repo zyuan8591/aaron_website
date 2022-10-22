@@ -6,6 +6,7 @@ const Header = () => {
     { id: '1', name: 'Home', link: '/' },
     { id: '2', name: 'Posts', link: '/posts' },
     { id: '3', name: 'TodoList', link: '/todo' },
+    { id: '4', name: 'EasyBank', link: '/easybank' },
   ];
 
   return (

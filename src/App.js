@@ -7,6 +7,7 @@ import TodoList from './pages/TodoList';
 import Test from './practice/Test';
 import Post from './pages/Post';
 import NotFound from './pages/NotFound';
+import EasyBank from './pages/EasyBank';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/posts" element={<Posts />} />
         <Route path="/posts/:postId" element={<Post />} />
         <Route path="/todo" element={<TodoList />} />
+        <Route path="/easybank" element={<EasyBank />} />
         <Route path="/test" element={<Test />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
