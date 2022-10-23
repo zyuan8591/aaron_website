@@ -9,7 +9,8 @@ const EasyBank = () => {
 
   useEffect(() => {
     // get localstorage banklist
-    setBankList(JSON.parse(localStorage.getItem('aaron_w_bank')));
+    let initData = localStorage.getItem('aaron_w_bank');
+    if (initData) setBankList(JSON.parse(localStorage.getItem('aaron_w_bank')));
   }, []);
 
   // ADD new bank => setBankList & error & localstorage
