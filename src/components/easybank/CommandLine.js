@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { AiOutlineRight } from 'react-icons/ai';
+import { AiOutlineRight, AiOutlineQuestionCircle } from 'react-icons/ai';
 
-const CommandLine = ({ delBank }) => {
+const CommandLine = ({ delBank, updateAmount }) => {
   const [command, setCommand] = useState('');
   const [commandError, setCommandError] = useState('');
   const [commandSuccess, setCommandSuccess] = useState('');
@@ -13,33 +13,87 @@ const CommandLine = ({ delBank }) => {
 
     if (command.trim()) {
       let cmd = command.split(' ');
+      let result = null;
+      let commandValid = true;
 
-      // delete bank
+      // check command
       if (cmd[0] === 'del') {
         // check command is valid or not
-        if (cmd.length !== 2) return commandNotFound();
-        // delete bank
-        let result = delBank(cmd[1] - 1);
+        if (cmd.length !== 2) {
+          commandValid = false;
+          errorText = `Unknown command: ${command}`;
+        }
+      } else if (
+        cmd[0] === 'update' ||
+        cmd[0] === 'add' ||
+        cmd[0] === 'minus'
+      ) {
+        // check command is valid or not
+        if (cmd.length !== 3) {
+          commandValid = false;
+          errorText = `Unknown command: ${command}`;
+        }
+      }
 
+      // update amount
+      if (commandValid) {
+        switch (cmd[0]) {
+          case 'del':
+            // delete bank
+            result = delBank(cmd[1] - 1);
+            break;
+          case 'update':
+            // update amount
+            result = updateAmount(cmd[1] - 1, cmd[2], 0);
+            break;
+          case 'add':
+            // add amount
+            result = updateAmount(cmd[1] - 1, cmd[2], 1);
+            break;
+          case 'minus':
+            // minus amount
+            result = updateAmount(cmd[1] - 1, cmd[2], 2);
+            break;
+          default:
+            break;
+        }
+        // command result
         if (result[0]) {
-          // delete failed
+          // command failed
           successText = result[1];
         } else {
+          // command success
           errorText = result[1];
         }
       }
+
       setCommandError(errorText);
       setCommandSuccess(successText);
       setCommand('');
     }
   };
-  // command not found
-  const commandNotFound = () => {
-    setCommandError(`Unknown command: ${command}`);
-  };
 
   return (
     <div className="flex items-center border border-lightGray rounded-sm px-1 relative">
+      {/* command description */}
+      <div className="flex items-center absolute right-full top-1/2 -translate-y-1/2 mr-2 group z-50 text-base  ">
+        <AiOutlineQuestionCircle />
+        <div className="absolute hidden top-full left-1/2 bg-mainContent opacity-90 group-hover:block mt-2 min-w-todoQ p-2 rounded text-white">
+          <h2 className="text-white">Command：</h2>
+          <ul className="list-decimal pl-4 pt-1">
+            <li>
+              刪除：del [id] <br /> ex. del 1
+            </li>
+            <li>
+              更新：update [id] amount <br /> ex. update 1 5566{' '}
+            </li>
+            <li>
+              加減：add/minus [id] amount <br /> ex. add 1 800
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* command input */}
       <AiOutlineRight />
       <input
         type="text"

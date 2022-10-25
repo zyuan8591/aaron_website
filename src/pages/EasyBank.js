@@ -19,9 +19,8 @@ const EasyBank = () => {
     if (checkBankValid(name)) return setError('Bank is already exist.');
     // add new bank to state
     let newBankList = [{ id: uuidv4(), name, amount }, ...bankList];
-    setBankList(newBankList);
     // update localstorage
-    localStorage.setItem('aaron_w_bank', JSON.stringify(newBankList));
+    updateBankList(newBankList);
     // clear error
     setError('');
   };
@@ -48,9 +47,38 @@ const EasyBank = () => {
     newBankList = newBankList.filter((bank, index) => i !== index);
 
     // setstate & localstorage
-    setBankList(newBankList);
-    localStorage.setItem('aaron_w_bank', JSON.stringify(newBankList));
-    return [true, 'bank delete'];
+    updateBankList(newBankList);
+    return [true, 'delete success'];
+  };
+
+  // UPDATE/ADD/MINUS amount => setBankList & localstorage => return [error or success, msg]
+  const updateAmountHandler = (i, amount, status) => {
+    // update failed
+    if (i > bankList.length - 1) return [false, 'bank not found'];
+
+    // update success
+    let newBankList = [...bankList];
+
+    newBankList = newBankList.map((bank, index) => {
+      // ADD & MINUS
+      if (status === 1) {
+        amount = JSON.stringify(parseInt(bank.amount) + parseInt(amount));
+      } else if (status === 2) {
+        amount = JSON.stringify(parseInt(bank.amount) - parseInt(amount));
+      }
+      if (i === index) return { ...bank, amount };
+      return bank;
+    });
+
+    // setstate & localstorage
+    updateBankList(newBankList);
+    return [true, 'update success'];
+  };
+
+  // UPDATE bankList & localstorage
+  const updateBankList = (list) => {
+    setBankList(list);
+    localStorage.setItem('aaron_w_bank', JSON.stringify(list));
   };
 
   return (
@@ -60,7 +88,10 @@ const EasyBank = () => {
         <span className="text-accentClr">B</span>ank
       </h1>
       <AddNewBank addBankHandler={addNewBankHandler} error={error} />
-      <CommandLine delBank={delBankHandler} />
+      <CommandLine
+        delBank={delBankHandler}
+        updateAmount={updateAmountHandler}
+      />
       <ul className="px-2 flex gap-3 flex-wrap">
         {bankList.map((bank, i) => (
           <li
