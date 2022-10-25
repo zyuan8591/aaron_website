@@ -87,12 +87,15 @@ const EasyBank = () => {
         <span className="text-accentClr">E</span>asy
         <span className="text-accentClr">B</span>ank
       </h1>
+      {/* add new bank */}
       <AddNewBank addBankHandler={addNewBankHandler} error={error} />
+      {/* command */}
       <CommandLine
         delBank={delBankHandler}
         updateAmount={updateAmountHandler}
       />
-      <ul className="px-2 flex gap-3 flex-wrap">
+      {/* bankList */}
+      <ul className="px-2 flex gap-3 flex-wrap  font-mono">
         {bankList.map((bank, i) => (
           <li
             key={bank.id}
@@ -112,6 +115,17 @@ const EasyBank = () => {
           </li>
         ))}
       </ul>
+      {/* total */}
+      <div className="font-mono flex justify-end items-center">
+        <span className="text-2xl">Total：</span>
+        <span className="text-accentClr text-3xl">
+          {JSON.stringify(
+            bankList.reduce((total, bank) => {
+              return total + parseInt(bank.amount);
+            }, 0)
+          ).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+        </span>
+      </div>
     </div>
   );
 };
